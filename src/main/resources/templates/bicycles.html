@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bicycles | Bicycle Shop</title>
+</head>
+<body>
+
+<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+<span th:text="${#authentication.getPrincipal().authorities}"></span>
+<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+
+<br/><h3>Choose bicycle:</h3>
+
+<div th:each="bicycle : ${bicycles}">
+
+    <form th:method="POST" th:object="${bicycle}"
+          th:action="@{/bicycles/order/{id}(id=${bicycle.getId()})}">
+        <!--<input type="hidden" name="id" value="${bicycle.getId()}"/>-->
+        <input type="submit" value="Buy"/>
+    </form>
+    <span th:text="${bicycle.getName() + ', ' + bicycle.getPrice()}">bicycle</span>
+</div>
+
+</body>
+</html>

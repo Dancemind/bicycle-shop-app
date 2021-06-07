@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login | Bicycle Shop</title>
+</head>
+
+<body>
+<h1>Please Login</h1>
+
+<div th:if="${error}">
+    Unable to login. Check your username and password.
+</div>
+
+<p>Click
+    <a th:href="@{/register}">here</a>
+    to register new customer account.</p>
+
+<form method="POST" th:action="@{/login}" id="loginForm">
+
+    <div style="color:red" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+    <label for="username">Username: </label>
+    <input type="text" name="username" id="username" /><br/>
+
+    <label for="password">Password: </label>
+    <input type="password" name="password" id="password" /><br/>
+
+    <input type="submit" value="Login"/>
+</form>
+</body>
+</html>

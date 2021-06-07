@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders - Admin Panel | Bicycles Shop</title>
+</head>
+<body>
+
+<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+<span th:text="${#authentication.getPrincipal().authorities}"></span>
+<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+
+<br/>
+<a th:href="@{/adminpanel}" id="adminpanel">Back to Admin panel</a><br/>
+
+<br/>
+
+<p>Order#, Placed at, Delivery name, zip, state, city, street</p>
+<div th:each="order : ${orders}">
+    <span th:text="${order.getId() + ', '
+            + order.getPlacedAt() + ', '
+            + order.getDeliveryName + ', '
+            + order.getDeliveryZip + ', '
+            + order.getDeliveryState + ', '
+            + order.getDeliveryCity + ', '
+            + order.getDeliveryStreet}">deliveryInfo</span>
+</div>
+
+</body>
+</html>

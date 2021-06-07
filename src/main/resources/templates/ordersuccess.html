@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Success | Bicycle Shop</title>
+</head>
+<body>
+
+<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+<span th:text="${#authentication.getPrincipal().authorities}"></span>
+<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+
+<br/>
+Thank you for your purchase! We will deliver your order in a week. <br/>
+Your order number:
+<span th:text="${id}">order id</span>
+<br/>
+<a th:href="@{/bicycles}" id="bicycles">Buy more bicycles</a><br/>
+</body>
+</html>

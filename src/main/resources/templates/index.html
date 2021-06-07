@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome To Bicycle Shop!</title>
+</head>
+<body>
+<a th:href="@{/adminpanel}" id="adminpanel">Admin panel</a><br/>
+<br/>
+<hr/>
+
+<a th:href="@{/bicycles}" id="bicycles">Show all bicycles</a><br/>
+<p>
+    Java Spring приложение - интернет-магазин с упрощенным функционалом.
+</p>
+<p>
+    Предоставление  доступа к различным частям сайта осуществляется<br/>
+    посредством авторизации на основе ролей USER / ADMIN.
+</p>
+<p>
+    Часть сайта для посетителей (Show all bicycles) - покупка товара.<br/>
+    В административной части (Admin panel) - наполнение сайта товаром,<br/>
+    просмотр поступивших заказов.
+</p>
+<p>
+    Новые пользователи создаются с ROLE_USER. Нет возможности создать<br/>
+    новых администраторов.
+</p>
+<p>
+    Есть 2 пользователя по умолчанию:
+    <ul>
+        <li>ad [ad] - администратор</li>
+        <li>sss [sss] - покупатель</li>
+    </ul>
+</p>
+</body>
+</html>

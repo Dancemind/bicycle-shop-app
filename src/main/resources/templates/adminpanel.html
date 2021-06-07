@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | Bicycle Shop</title>
+</head>
+<body>
+<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+<span th:text="${#authentication.getPrincipal().authorities}"></span>
+<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+<br/>
+<a th:href="@{/adminpanel/bicycles}" id="apbicycles">Manage bicycles</a><br/>
+<a th:href="@{/adminpanel/orders}" id="aporders">View orders</a><br/>
+</body>
+</html>

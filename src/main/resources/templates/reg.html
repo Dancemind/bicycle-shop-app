@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration | Bicycle Shop</title>
+</head>
+<body>
+<h1>Registration</h1>
+<form method="POST" th:action="@{/register}" th:object="${user}" id="registrationForm">
+
+    <div style="color:red" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+    <div>
+        <label>Username: </label>
+        <input th:field="*{username}"/>
+        <p style="color:red" th:each="error: ${#fields.errors('username')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label>Password: </label>
+        <input type="password" th:field="*{password}"/>
+        <p style="color:red" th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+    </div>
+    <div>
+        <label>Confirm password: </label>
+        <input type="password" th:field="*{matchingPassword}"/>
+    </div>
+    <button type="submit" >submit</button>
+</form>
+
+</body>
+</html>

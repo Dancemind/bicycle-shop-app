@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Bicycle - Admin Panel | Bicycle Shop</title>
+</head>
+<body>
+
+<span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+<span th:text="${#authentication.getPrincipal().authorities}"></span>
+<form method="POST" th:action="@{/logout}" id="logoutForm">
+    <input type="submit" value="Logout"/>
+</form>
+
+<br/>
+<h3>Add bicycle</h3>
+<form th:method="POST" th:action="@{/adminpanel/addbicycle}" th:object="${bicycle}">
+
+    <div th:if="${#fields.hasErrors()}">
+        <span style="color:red" class="validationError">
+            Please correct the problems below and resubmit.
+        </span>
+    </div>
+    <div style="color:red" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+
+    <br/>
+    <label for="price">Price: </label>
+    <input type="text" th:field="*{price}" id="price"/>
+    <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price Error</div>
+
+
+    <br/>
+    <input type="submit" value="Add"/>
+</form>
+
+</body>
+</html>
