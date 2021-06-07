@@ -21,15 +21,17 @@ import javax.validation.Valid;
 
 @Controller
 @SessionAttributes("order")
-@Slf4j
+//@Slf4j
 public class OrderController {
 
     private OrderRepository orderRepo;
     private UserRepository userRepo;
 
 
-    public OrderController(OrderRepository orderRepo) {
+    public OrderController(OrderRepository orderRepo, UserRepository userRepo) {
+
         this.orderRepo = orderRepo;
+        this.userRepo = userRepo;
     }
 
 
@@ -48,6 +50,7 @@ public class OrderController {
         user.setState(order.getDeliveryState());
         user.setZip(order.getDeliveryZip());
 
+        userRepo.save(user);
         //log.info("--------user:" + user.toString());
 
         order.placedAt();

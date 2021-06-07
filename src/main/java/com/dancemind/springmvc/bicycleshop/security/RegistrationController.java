@@ -47,7 +47,7 @@ public class RegistrationController {
     public String processRegistration(@ModelAttribute("user") @Valid UserDto userDto,
                                       BindingResult bindingResult, Model model) {
 
-        log.info("---------- user: " + userDto.toString());
+        //log.info("---------- user: " + userDto.toString());
 
         if (bindingResult.hasErrors())
             //return "registration";
@@ -63,8 +63,6 @@ public class RegistrationController {
                 userDto.getPassword(),"USER");
 
         userRepo.save(user);
-
-        //userRepo.save(form.toUser(passwordEncoder));
 
         return "redirect:/login";
     }

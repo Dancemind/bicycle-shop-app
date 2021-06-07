@@ -17,7 +17,7 @@ import static java.util.Objects.isNull;
 
 @Controller
 @SessionAttributes("order")
-@Slf4j
+//@Slf4j
 public class BicycleController {
 
     private BicycleRepository bicycleRepository;
